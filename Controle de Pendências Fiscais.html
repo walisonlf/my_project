@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Completo de Pendências Fiscais | Visão por UF</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #2ecc71;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --white: #ffffff;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f8f9fa;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 25px;
+        }
+        
+        .sidebar {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar h3 i {
+            color: var(--secondary);
+        }
+        
+        .filter-group {
+            margin-bottom: 25px;
+        }
+        
+        .filter-group h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        
+        .filter-option:hover {
+            background-color: var(--light);
+        }
+        
+        .filter-option.active {
+            background-color: rgba(52, 152, 219, 0.1);
+            font-weight: 500;
+        }
+        
+        .status-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .status-badge.urgent {
+            background-color: var(--danger);
+        }
+        
+        .status-badge.important {
+            background-color: var(--warning);
+        }
+        
+        .status-badge.normal {
+            background-color: var(--success);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .summary-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .summary-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .summary-card .value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .summary-card .description {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .summary-card.total {
+            border-top: 4px solid var(--primary);
+        }
+        
+        .summary-card.urgent {
+            border-top: 4px solid var(--danger);
+        }
+        
+        .summary-card.important {
+            border-top: 4px solid var(--warning);
+        }
+        
+        .summary-card.normal {
+            border-top: 4px solid var(--success);
+        }
+        
+        .uf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .uf-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .uf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .uf-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .uf-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .uf-flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .uf-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .uf-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-urgent {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+        }
+        
+        .status-important {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+        
+        .status-normal {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success);
+        }
+        
+        .uf-content {
+            padding: 20px;
+        }
+        
+        .uf-section {
+            margin-bottom: 15px;
+        }
+        
+        .uf-section h3 {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .uf-section h3 i {
+            font-size: 0.9rem;
+        }
+        
+        .uf-section p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .filiais-list {
+            margin-left: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .filiais-list li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .filiais-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .valor-destaque {
+            font-weight: 700;
+            color: var(--danger);
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .decisao-interna {
+            background-color: rgba(52, 152, 219, 0.05);
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 15px;
+        }
+        
+        .decisao-interna h3 {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .decisao-interna p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--dark);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .decisao-interna p:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .summary-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .uf-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-file-invoice-dollar"></i> Relatório Completo de Pendências Fiscais</h1>
+            <p>Visão detalhada por Unidade Federativa - Atualizado em Abril/2025</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard">
+            <div class="sidebar">
+                <h3><i class="fas fa-filter"></i> Filtros</h3>
+                
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar por UF...">
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Status</h4>
+                    <div class="filter-option active">
+                        <span class="status-badge urgent"></span>
+                        <span>Urgentes (7)</span>
+                    </div>
+                    <div class="filter-option active">
+                        <span class="status-badge important"></span>
+                        <span>Importantes (11)</span>
+                    </div>
+                    <div class="filter-option active">
+                        <span class="status-badge normal"></span>
+                        <span>Normais (9)</span>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Regiões</h4>
+                    <div class="filter-option active">
+                        <span>Todas Regiões</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Norte</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Nordeste</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Centro-Oeste</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Sudeste</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Sul</span>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>Ordenar por</h4>
+                    <div class="filter-option active">
+                        <span>Prioridade</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Ordem Alfabética</span>
+                    </div>
+                    <div class="filter-option">
+                        <span>Valor Pendente</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="summary-cards">
+                    <div class="summary-card total">
+                        <h3>Total de UFs</h3>
+                        <div class="value">27</div>
+                        <div class="description">Unidades Federativas analisadas</div>
+                    </div>
+                    
+                    <div class="summary-card urgent">
+                        <h3>Pendências Urgentes</h3>
+                        <div class="value">7</div>
+                        <div class="description">Risco de protesto/bacenjud</div>
+                    </div>
+                    
+                    <div class="summary-card important">
+                        <h3>Pendências Importantes</h3>
+                        <div class="value">11</div>
+                        <div class="description">Necessitam atenção</div>
+                    </div>
+                    
+                    <div class="summary-card normal">
+                        <h3>Sem Pendências</h3>
+                        <div class="value">9</div>
+                        <div class="description">CNDs negativas</div>
+                    </div>
+                </div>
+                
+                <div class="uf-grid">
+                    <!-- AC - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">AC - Acre</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1013 - CND Positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Consta no portal da SEFAZ um débito de ICMS no valor total de <span class="valor-destaque">R$ 11.989,68</span>, referente a duas pendências especificadas por lançamentos. O prazo para regularização é de 10 dias úteis, e a filial 1013 está com a CND positiva.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Aguardando retorno da Andrade Maia a respeito da regularização</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AL - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">AL - Alagoas</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AM - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">AM - Amazonas</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AP - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">AP - Amapá</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1013 e 1023 - CND Positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>CND Positiva, em processo de verificação das pendências.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Não foi possível realizar a consulta dos débitos por meio do Portal do Contribuinte. Diante disso, encaminhamos um e-mail à SEFAZ solicitando um relatório detalhado das pendências.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- BA - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">BA - Bahia</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva e enviado para protesto com risco de bacenjud.</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No portal da SEFAZ constam vários débitos em aberto por nota fiscal e não tem um relatório consolidado demonstrando o detalhamento das pendências. Para entrar com pedido de mandado de segurança precisaríamos provar que cada uma das pendências se refere ao depósito judicial e pra isso precisaríamos verificar nota a nota.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Iremos realizar uma conciliação interna verificando cada auto de infração para demonstrar que o valor do débito foi depositado em juízo.</p>
+                                <p>Após a conclusão deste confronto iremos enviar para Andrade Maia entrar com pedido de reconhecimento do depósito judicial e solicitar através de mandado de segurança que a situação da Inscrição seja reestabelecida. (Previsão de conclusão do levantamento final de Maio)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CE - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">CE - Ceará</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DF - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">DF - Distrito Federal</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>A filial 1013 possui pendências referentes ao período de abril de 2022 a dezembro de 2022 em cobrança administrativa.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Entrar em contato com a Sefaz para apresentar os comprovantes de recolhimento via depósito judicial referentes ao período de abril a outubro de 2022.</p>
+                                <p>Verificar a possibilidade de parcelamento dos débitos correspondentes aos meses de novembro e dezembro de 2022.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ES - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">ES - Espírito Santo</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- GO - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">GO - Goiás</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Recebemos três autuações em fevereiro de 2024 (processos 4-0124001-089-63, 4-0124001-724-67 e 4-0124001-091-88) por omissão no recolhimento do ICMS-DIFAL entre janeiro e dezembro de 2023. Identificamos que para filial 1013 de abril a dezembro de 2023 foi suspenso pela diretoria.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Acionamos a Andrade Maia que retornou falando que, o fundamento utilizado no recurso que será apresentado é a invalidade da cobrança do DIFAL 2023, assemelhando-se ao mérito discutido no Mandado de Segurança nº 5085930-13.2023.8.09.0051. Com essa fundamentação, temos como pretensão inicial suspender a cobrança até que seja julgada a impugnação, evitando-se, assim, uma futura execução fiscal.</p>
+                                <p>Encaminhar um novo e-mail para Andrade Maia e verificar a previsão de regularização e riscos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MA - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">MA - Maranhão</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No portal da SEFAZ, constam débitos de ICMS DIFAL (EC 87/2015) que exigem comprovação de recolhimento via depósito judicial. Sempre que recebemos a notificação, encaminhamos o caso para Andrade Maia.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Enviar e-mail para sefaz-MA e verificar os débitos que estão em cobrança e encaminhar para Andrade Maia o que for relacionado ao DIFAL EC 87/2015 para a devida regularização.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MG - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">MG - Minas Gerais</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1009, 1013, 1017, 1022 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>A Certidão de Débitos Tributários da Friovix Comércio de Refrigeração Ltda, emitida em 14/04/2025 pela Secretaria de Estado de Fazenda de Minas Gerais, continua positiva, indicando a existência de débitos em aberto e outros com exigibilidade suspensa, incluindo questões relacionadas ao DIFAL (EC 87/15), o que demanda uma análise urgente por parte dos advogados.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Andrade Maia solicitou cópia dos autos administrativos (processo PTA, conforme consta na CDT) para verificação dos débitos pendentes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MS - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">MS - Mato Grosso do Sul</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Identificamos pendências fiscais, referente a (DIFCON) nos meses de 2022 a 2025, conforme detalhado nos relatórios de pendências fiscais, além de débitos relacionados a (TVF) referente a nota fiscais de remessa de mercadorias por conta e ordem sem o devido destaque de imposto e sem a correta referência a notas fiscais de venda destinadas ao local de entrega, resultando na exigência do ICMS. A empresa também possui um débito referente a ALIM.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Realizar a regularização das pendências relacionadas aos TVFs das notas fiscais de vendas.</p>
+                                <p>Verificar junto a Sefaz MS sobre a pendência de ALIM para filial 1017, após sanadas as pendências verificar se a CND será regularizada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MT - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">MT - Mato Grosso</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 - CND positiva e dívida ativa</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Recebemos um alerta formal da SEFAZ/MT sobre a necessidade de regularização imediata da situação fiscal da empresa. Identificamos:</p>
+                                <ul class="filiais-list">
+                                    <li>Dívida Ativa: Débitos inscritos na Procuradoria Geral do Estado (PGE/MT) referente ao DIFAL da EC 87/2015</li>
+                                    <li>Novos Lançamentos: Débitos recentes na Conta Corrente Fiscal, referentes ao período de novembro de 2022 a janeiro de 2025</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Enviar e-mail para Andrade Maia relatando as pendências para regularização. (OK)</p>
+                                <p>Pedir para priorizar isto devido a dívida ativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PA - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">PA - Pará</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1023 - CND positiva e dívida ativa</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Pendência tributária total de <span class="valor-destaque">R$ 93.858,93</span>, composta por:</p>
+                                <ul class="filiais-list">
+                                    <li>Valores de ICMS DIFAL EC 87/2015 referente a competência 02 e 03 de 2025</li>
+                                    <li>Débito inscrito em dívida Ativa ICMS de R$ 3.879,05 (07/2024)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Encaminhar para Andrade Maia.</p>
+                                <p>Verificar do que se trata a pendência de ICMS em dívida ativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PB - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">PB - Paraíba</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PE - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">PE - Pernambuco</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1015, 1017 e 1023 - CND positiva e enviada para protesto</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>A empresa possui diversas Certidões de Dívida Ativa (CDA) referentes a débitos declarados de ICMS e outras infrações fiscais, inscritas na Procuradoria Geral do Estado de Pernambuco.</p>
+                                <p>EM PE não temos autorização de depósito e a autorização de depósito tem sido negada e a Sefaz não cumpre a Suspensão do ICMS.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Andrade Maia enviou um carta conforto para envio aos bancos; (OK)</p>
+                                <p>Tentar um novo pedido de inscrição estadual para termos base para solicitar um mandado de segurança.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PI - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">PI - Piauí</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva e dívida ativa, (Débitos no Serasa)</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Débitos inscritos em dívida ativa totalizando <span class="valor-destaque">R$ 4.370.808,18</span>.</p>
+                                <ul class="filiais-list">
+                                    <li>Filial 1005: débitos de DIFAL dos períodos 09/2024, 01/2025 e 02/2025 e cobrança em dívida ativa referente a mês 10/2023 e 11/2023</li>
+                                    <li>Filial 1013: débitos de DIFAL dos períodos 09/2024, 01/2025 e 02/2025, débitos de TVI e cobrança em dívida ativa referente a mês 10/2023 e 11/2023</li>
+                                    <li>Filial 1017: débitos de DIFAL de 04/2023 a 10/2023, 09/2024, 01/2025 e 02/2025 e cobrança em dívida ativa referente a mês 10/2023 e 11/2023</li>
+                                    <li>Filial 1023: débitos de TVI do mês 01/2025</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Verificar o detalhamento das cobranças em dívida ativa que dizem a respeito ao DIFAL</p>
+                                <p>Enviar para Andrade Maia as pendências relacionadas a cobrança do DIFAL</p>
+                                <p>Verificar do que se refere as cobranças de TVI e providenciar a regularização</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PR - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">PR - Paraná</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva e dívida ativa</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>As filiais apresentam as seguintes pendências:</p>
+                                <ul class="filiais-list">
+                                    <li>Filial 1005: 1 pendência de DIFAL e 25 pendências de dívida ativa</li>
+                                    <li>Filial 1013: 2 pendências de DIFAL e 25 pendências de dívida ativa</li>
+                                    <li>Filial 1017: 23 pendências de dívida ativa</li>
+                                    <li>Filial 1023: 2 pendências de DIFAL e 25 pendências de dívida ativa</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Encaminhar a solicitação ao escritório Andrade Maia para obter orientação sobre a comprovação do recolhimento dos débitos relacionados ao DIFAL EC 87/2015.</p>
+                                <p>Consultar o escritório Andrade Maia para identificar as providências necessárias à regularização dos débitos atualmente inscritos em dívida ativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RJ - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">RJ - Rio de Janeiro</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1012, 1013, 1014, 1017 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>O relatório identificou pendências fiscais significativas na empresa, totalizando mais de <span class="valor-destaque">R$ 49 milhões</span> em débitos não pagos, principalmente relacionados a ICMS e FECP não recolhidos conforme a EC87/2015.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Fazer o levantamento dos débitos por mês para encaminhar para Andrade Maia o que refere-se a ICMS DIFAL EC 87/2015, e verificar.</p>
+                                <p>Filial 1012 está com pendência de recolhimento de ICMS OP e FECP OP no valor de <span class="valor-destaque">R$ 37.633,04</span> e conforme levantamento com financeiro não foi localizado comprovante de pagamento.</p>
+                                <p>Verificar se estamos com débitos inscritos em dívida ativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RN - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">RN - Rio Grande do Norte</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>As filiais apresentam as seguintes pendências:</p>
+                                <ul class="filiais-list">
+                                    <li>Filial 1005: 2 pendências de DIFAL e diversos débitos vencidos totalizando <span class="valor-destaque">R$ 36.636,69</span></li>
+                                    <li>Filial 1013: 1 pendência de DIFAL e diversos débitos vencidos totalizando <span class="valor-destaque">R$ 99.179,34</span></li>
+                                    <li>Filial 1017: 1 pendência de DIFAL e débitos vencidos totalizando <span class="valor-destaque">R$ 78.173,42</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Encaminhar a solicitação ao escritório Andrade Maia para obter orientação sobre a comprovação do recolhimento dos débitos relacionados ao DIFAL EC 87/2015.</p>
+                                <p>Em relação aos débitos lançados por nota, com status de "débitos vencidos", é necessário verificar se eles podem estar relacionados a operações triangulares.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RO - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">RO - Rondônia</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RR - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">RR - Roraima</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005 - CND positiva, Filial 1023 - CND negativa</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>A filial 1005 possui débitos de fronteira, totalizando <span class="valor-destaque">R$ 10.038,62</span> até 15/04/2025, referentes a diversos períodos e notas fiscais, incluindo valores de principal, multa, juros e correção.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Em relação aos débitos lançados por nota e classificados como Débitos de Fronteira, é essencial realizar uma análise detalhada para identificar se estão vinculados a operações triangulares.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RS - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">RS - Rio Grande do Sul</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>As filiais 1005, 1013, 1017 e 1023 apresentam pendências de débito de DIFAL referentes aos meses de novembro e dezembro de 2022, com depósito judicial. Cada filial possui duas pendências.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Depósito Judicial – Recolhimento suspenso pela Diretoria nos meses de novembro e dezembro de 2022.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SC - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">SC - Santa Catarina</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>As filiais apresentam, cada uma, 7 pendências de débito de DIFAL EC 87/2015 referentes aos períodos de 11/2022, 12/2022, 04/2023 (Recolhimento suspenso pela diretoria), 11/2024, 12/2024, 01/2025 e 02/2025, com depósito judicial.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Verificar quais providências devem ser adotadas nos casos de depósito judicial em que o recolhimento foi suspenso pela Diretoria nos meses de novembro e dezembro de 2022 e abril de 2023.</p>
+                                <p>Verificar com Andrade Maia as medidas cabíveis para os débitos referentes aos meses de novembro/2024, dezembro/2024, janeiro/2025 e fevereiro/2025, nos quais houve o recolhimento por meio de depósito judicial.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SE - Importante -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">SE - Sergipe</span>
+                            </div>
+                            <span class="uf-status status-important">Importante</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Filial 1005, 1013, 1017 e 1023 - CND positiva</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>As filiais apresentam lançamentos a crédito (positivos) e a débito (negativos) em diferentes períodos. Em resumo, a análise detalhada dos saldos contábeis permite identificar padrões de endividamento ou lucratividade em cada empresa, bem como variações ao longo do tempo, com base nos meses em que os lançamentos foram realizados.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Enviar para Andrade Maia solicitar para que seja realizado a comprovação do recolhimento dos valores por meio de depósito judicial.</p>
+                                <p>Nos períodos com lançamentos a crédito, é preciso verificar se a obrigação acessória foi entregue e se o seu preenchimento foi realizado corretamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SP - Urgente -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">SP - São Paulo</span>
+                            </div>
+                            <span class="uf-status status-urgent">Urgente</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>CDAs 2020 e 2023 ativas na SEFAZ enviado para Protesto com risco de bacenjud.</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>Foram corrigidas as DAREs dos meses 04, 05 e 06 de 2023, que haviam sido recolhidas com o código incorreto, assim a parte do imposto pago por meio de GNRE foi reconhecida e abatida na guia da PGE, porém ainda resta a diferença de valor de honorários e correção de valor com multa e juros para regularização da pendência.</p>
+                            </div>
+                            
+                            <div class="decisao-interna">
+                                <h3><i class="fas fa-clipboard-check"></i> Decisão Interna</h3>
+                                <p>Referente as competências 04/05/06 de 2023 da filial 23 precisamos realizar o pagamento dos honorários advocatícios e acompanhar o retorno do processo administrativo de reconhecimento do pagamento via GNRE que foi realizado.</p>
+                                <p>Por decisão interna, não iremos realizar o pagamento da dívida apontada pela PGE e nem realizar o parcelamento porque para parcelar teríamos que parcelar 2020 também, porque ambos os débitos estão na mesma execução fiscal e para o período de 2020, conforme Andrade Maia, temos grandes chances de êxito.</p>
+                                <p>Temos risco bacenjud a qualquer momento e assim que acontecer temos que mobilizar a Andrade Maia imediatamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- TO - Normal -->
+                    <div class="uf-card">
+                        <div class="uf-header">
+                            <div class="uf-name">
+                                <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
+                                <span class="uf-title">TO - Tocantins</span>
+                            </div>
+                            <span class="uf-status status-normal">Normal</span>
+                        </div>
+                        <div class="uf-content">
+                            <div class="uf-section">
+                                <h3><i class="fas fa-exclamation-circle"></i> Pendências</h3>
+                                <p>Todas as CNDs negativas</p>
+                            </div>
+                            
+                            <div class="uf-section">
+                                <h3><i class="fas fa-search"></i> Resumo</h3>
+                                <p>No momento, não há pendências a serem regularizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Relatório gerado em 16/04/2025 | Departamento Fiscal | Friovix Comércio de Refrigeração Ltda.</p>
+            <p><i class="fas fa-lock"></i> Documento confidencial - Uso interno</p>
+        </div>
+    </footer>
+
+    <script>
+        // Função simples para filtro de pesquisa
+        document.querySelector('.search-container input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.uf-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.uf-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
