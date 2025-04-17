@@ -17,6 +17,9 @@
             --dark: #34495e;
             --white: #ffffff;
             --gray: #95a5a6;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --card-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * {
@@ -31,6 +34,8 @@
             color: var(--dark);
             background-color: #f8f9fa;
             padding: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         
         .container {
@@ -45,8 +50,9 @@
             padding: 30px 0;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: var(--card-shadow);
             border-radius: 0 0 10px 10px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         }
         
         header h1 {
@@ -64,82 +70,8 @@
         
         .dashboard {
             display: grid;
-            grid-template-columns: 250px 1fr;
+            grid-template-columns: 1fr;
             gap: 25px;
-        }
-        
-        .sidebar {
-            background-color: var(--white);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .sidebar h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .sidebar h3 i {
-            color: var(--secondary);
-        }
-        
-        .filter-group {
-            margin-bottom: 25px;
-        }
-        
-        .filter-group h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        
-        .filter-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 8px;
-            border-radius: 6px;
-        }
-        
-        .filter-option:hover {
-            background-color: var(--light);
-        }
-        
-        .filter-option.active {
-            background-color: rgba(52, 152, 219, 0.1);
-            font-weight: 500;
-        }
-        
-        .status-badge {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-        
-        .status-badge.urgent {
-            background-color: var(--danger);
-        }
-        
-        .status-badge.important {
-            background-color: var(--warning);
-        }
-        
-        .status-badge.normal {
-            background-color: var(--success);
         }
         
         .main-content {
@@ -148,78 +80,120 @@
             gap: 25px;
         }
         
-        .summary-cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         
-        .summary-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .filter-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .summary-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .filter-btn i {
+            font-size: 1rem;
         }
         
-        .summary-card h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
+        .filter-btn.total {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .filter-btn.urgent {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .filter-btn.important {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .filter-btn.normal {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .filter-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding-left: 45px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--gray);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        
-        .summary-card .value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .summary-card .description {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .summary-card.total {
-            border-top: 4px solid var(--primary);
-        }
-        
-        .summary-card.urgent {
-            border-top: 4px solid var(--danger);
-        }
-        
-        .summary-card.important {
-            border-top: 4px solid var(--warning);
-        }
-        
-        .summary-card.normal {
-            border-top: 4px solid var(--success);
         }
         
         .uf-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 20px;
+            align-items: stretch;
+            transition: var(--card-transition);
         }
         
         .uf-card {
             background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--card-shadow);
+            transition: var(--card-transition), height 0.3s ease, opacity 0.3s ease;
+            will-change: transform, opacity;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .uf-card.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            height: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            overflow: hidden;
+            will-change: transform, opacity;
+            display: none;
         }
         
         .uf-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
         .uf-header {
@@ -274,6 +248,9 @@
         
         .uf-content {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .uf-section {
@@ -334,6 +311,7 @@
             padding: 15px;
             border-radius: 0 6px 6px 0;
             margin-top: 15px;
+            flex-grow: 1;
         }
         
         .decisao-interna h3 {
@@ -361,6 +339,14 @@
             color: var(--secondary);
         }
         
+        .counter-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
         footer {
             text-align: center;
             margin-top: 50px;
@@ -369,30 +355,9 @@
             font-size: 0.85rem;
         }
         
-        .search-container {
-            margin-bottom: 20px;
-        }
-        
-        .search-container input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-        }
-        
         @media (max-width: 1200px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                position: static;
-            }
-            
-            .summary-cards {
-                grid-template-columns: repeat(2, 1fr);
+            .uf-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
         
@@ -401,8 +366,13 @@
                 font-size: 2rem;
             }
             
-            .summary-cards {
-                grid-template-columns: 1fr;
+            .filter-controls {
+                flex-direction: column;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .uf-grid {
@@ -421,95 +391,34 @@
     
     <div class="container">
         <div class="dashboard">
-            <div class="sidebar">
-                <h3><i class="fas fa-filter"></i> Filtros</h3>
+            <div class="main-content">
+                <div class="filter-controls">
+                    <button class="filter-btn total active" data-filter="all">
+                        <i class="fas fa-map"></i> Total de UFs
+                        <span class="counter-badge">27</span>
+                    </button>
+                    <button class="filter-btn urgent" data-filter="urgent">
+                        <i class="fas fa-exclamation-triangle"></i> Pendências Urgentes
+                        <span class="counter-badge">7</span>
+                    </button>
+                    <button class="filter-btn important" data-filter="important">
+                        <i class="fas fa-exclamation-circle"></i> Pendências Importantes
+                        <span class="counter-badge">11</span>
+                    </button>
+                    <button class="filter-btn normal" data-filter="normal">
+                        <i class="fas fa-check-circle"></i> Sem Pendências
+                        <span class="counter-badge">9</span>
+                    </button>
+                </div>
                 
                 <div class="search-container">
-                    <input type="text" placeholder="Pesquisar por UF...">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Pesquisar por UF ou estado...">
                 </div>
                 
-                <div class="filter-group">
-                    <h4>Status</h4>
-                    <div class="filter-option active">
-                        <span class="status-badge urgent"></span>
-                        <span>Urgentes (7)</span>
-                    </div>
-                    <div class="filter-option active">
-                        <span class="status-badge important"></span>
-                        <span>Importantes (11)</span>
-                    </div>
-                    <div class="filter-option active">
-                        <span class="status-badge normal"></span>
-                        <span>Normais (9)</span>
-                    </div>
-                </div>
-                
-                <div class="filter-group">
-                    <h4>Regiões</h4>
-                    <div class="filter-option active">
-                        <span>Todas Regiões</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Norte</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Nordeste</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Centro-Oeste</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Sudeste</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Sul</span>
-                    </div>
-                </div>
-                
-                <div class="filter-group">
-                    <h4>Ordenar por</h4>
-                    <div class="filter-option active">
-                        <span>Prioridade</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Ordem Alfabética</span>
-                    </div>
-                    <div class="filter-option">
-                        <span>Valor Pendente</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="main-content">
-                <div class="summary-cards">
-                    <div class="summary-card total">
-                        <h3>Total de UFs</h3>
-                        <div class="value">27</div>
-                        <div class="description">Unidades Federativas analisadas</div>
-                    </div>
-                    
-                    <div class="summary-card urgent">
-                        <h3>Pendências Urgentes</h3>
-                        <div class="value">7</div>
-                        <div class="description">Risco de protesto/bacenjud</div>
-                    </div>
-                    
-                    <div class="summary-card important">
-                        <h3>Pendências Importantes</h3>
-                        <div class="value">11</div>
-                        <div class="description">Necessitam atenção</div>
-                    </div>
-                    
-                    <div class="summary-card normal">
-                        <h3>Sem Pendências</h3>
-                        <div class="value">9</div>
-                        <div class="description">CNDs negativas</div>
-                    </div>
-                </div>
-                
-                <div class="uf-grid">
+                <div class="uf-grid" id="uf-grid">
                     <!-- AC - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="AC">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -536,7 +445,7 @@
                     </div>
                     
                     <!-- AL - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="AL">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -558,7 +467,7 @@
                     </div>
                     
                     <!-- AM - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="AM">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -580,7 +489,7 @@
                     </div>
                     
                     <!-- AP - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="AP">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -607,7 +516,7 @@
                     </div>
                     
                     <!-- BA - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="BA">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -635,7 +544,7 @@
                     </div>
                     
                     <!-- CE - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="CE">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -657,7 +566,7 @@
                     </div>
                     
                     <!-- DF - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="DF">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -685,7 +594,7 @@
                     </div>
                     
                     <!-- ES - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="ES">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -707,7 +616,7 @@
                     </div>
                     
                     <!-- GO - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="GO">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -735,7 +644,7 @@
                     </div>
                     
                     <!-- MA - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="MA">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -751,7 +660,7 @@
                             
                             <div class="uf-section">
                                 <h3><i class="fas fa-search"></i> Resumo</h3>
-                                <p>No portal da SEFAZ, constam débitos de ICMS DIFAL (EC 87/2015) que exigem comprovação de recolhimento via depósito judicial. Sempre que recebemos a notificação, encaminhamos o caso para Andrade Maia.</p>
+                                <p>No portal da SEFAZ constam débitos de ICMS DIFAL (EC 87/2015) que exigem comprovação de recolhimento via depósito judicial. Sempre que recebemos a notificação, encaminhamos o caso para Andrade Maia.</p>
                             </div>
                             
                             <div class="decisao-interna">
@@ -762,7 +671,7 @@
                     </div>
                     
                     <!-- MG - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="MG">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -789,7 +698,7 @@
                     </div>
                     
                     <!-- MS - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="MS">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -817,7 +726,7 @@
                     </div>
                     
                     <!-- MT - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="MT">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -849,7 +758,7 @@
                     </div>
                     
                     <!-- PA - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="PA">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -881,7 +790,7 @@
                     </div>
                     
                     <!-- PB - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="PB">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -903,7 +812,7 @@
                     </div>
                     
                     <!-- PE - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="PE">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -932,7 +841,7 @@
                     </div>
                     
                     <!-- PI - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="PI">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -967,7 +876,7 @@
                     </div>
                     
                     <!-- PR - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="PR">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1001,7 +910,7 @@
                     </div>
                     
                     <!-- RJ - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="RJ">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1030,7 +939,7 @@
                     </div>
                     
                     <!-- RN - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="RN">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1063,7 +972,7 @@
                     </div>
                     
                     <!-- RO - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="RO">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1085,7 +994,7 @@
                     </div>
                     
                     <!-- RR - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="RR">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1112,7 +1021,7 @@
                     </div>
                     
                     <!-- RS - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="RS">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1139,7 +1048,7 @@
                     </div>
                     
                     <!-- SC - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="SC">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1167,7 +1076,7 @@
                     </div>
                     
                     <!-- SE - Importante -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="important" data-uf="SE">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1195,7 +1104,7 @@
                     </div>
                     
                     <!-- SP - Urgente -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="urgent" data-uf="SP">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1224,7 +1133,7 @@
                     </div>
                     
                     <!-- TO - Normal -->
-                    <div class="uf-card">
+                    <div class="uf-card" data-status="normal" data-uf="TO">
                         <div class="uf-header">
                             <div class="uf-name">
                                 <img src="https://flagsapi.com/BR/flat/24.png" class="uf-flag">
@@ -1257,19 +1166,98 @@
     </footer>
 
     <script>
-        // Função simples para filtro de pesquisa
-        document.querySelector('.search-container input').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.uf-card');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos do DOM
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const ufCards = document.querySelectorAll('.uf-card');
+            const searchInput = document.querySelector('.search-input');
+            const ufGrid = document.getElementById('uf-grid');
             
-            cards.forEach(card => {
-                const title = card.querySelector('.uf-title').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            // Contadores
+            const counters = {
+                all: ufCards.length,
+                urgent: document.querySelectorAll('.uf-card[data-status="urgent"]').length,
+                important: document.querySelectorAll('.uf-card[data-status="important"]').length,
+                normal: document.querySelectorAll('.uf-card[data-status="normal"]').length
+            };
+            
+            // Filtro por status
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Atualiza o botão ativo
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Aplica o filtro com animação suave
+                    applyFilter(filter);
+                    
+                    // Atualiza a busca se houver texto
+                    if (searchInput.value) {
+                        filterBySearch(searchInput.value, filter);
+                    }
+                });
             });
+            
+            // Função para aplicar filtro
+            function applyFilter(filter) {
+                // Forçar reflow para animação suave
+                ufGrid.style.minHeight = ufGrid.offsetHeight + 'px';
+                
+                requestAnimationFrame(() => {
+                    ufCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.status === filter) {
+                            card.classList.remove('hidden');
+                            card.style.display = 'flex';
+                        } else {
+                            card.classList.add('hidden');
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Restaurar altura após a animação
+                    setTimeout(() => {
+                        ufGrid.style.minHeight = '';
+                    }, 300);
+                });
+            }
+            
+            // Função de busca com debounce
+            let searchTimeout;
+            function filterBySearch(searchTerm, activeFilter = 'all') {
+                clearTimeout(searchTimeout);
+                
+                searchTimeout = setTimeout(() => {
+                    const term = searchTerm.toLowerCase();
+                    
+                    ufCards.forEach(card => {
+                        const uf = card.dataset.uf.toLowerCase();
+                        const title = card.querySelector('.uf-title').textContent.toLowerCase();
+                        const matchesSearch = uf.includes(term) || title.includes(term);
+                        const matchesFilter = activeFilter === 'all' || card.dataset.status === activeFilter;
+                        
+                        if (matchesSearch && matchesFilter) {
+                            card.classList.remove('hidden');
+                            card.style.display = 'flex';
+                        } else {
+                            card.classList.add('hidden');
+                            card.style.display = 'none';
+                        }
+                    });
+                }, 300);
+            }
+            
+            // Evento de busca
+            searchInput.addEventListener('input', function() {
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                filterBySearch(this.value, activeFilter);
+            });
+            
+            // Animação ao carregar
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
