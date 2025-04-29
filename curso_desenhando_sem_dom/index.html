@@ -18,12 +18,11 @@
 
   gtag('config', 'AW-17037075658');
 </script>
+    <!-- Meta Tags Essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de Desenho Realista do Zero | Desenhando sem DOM</title>
-    <meta name="description" content="Aprenda desenho realista do zero mesmo sem dom! Método comprovado para iniciantes. Garanta seu desconto por tempo limitado.">
-    <meta name="keywords" content="curso de desenho, desenho realista, aprender a desenhar, desenho para iniciantes, técnicas de desenho, desenho a lápis">
-    <meta name="author" content="Desenhando sem DOM">
+    <meta name="description" content="Aprenda desenho realista do zero com o curso Desenhando Sem Dom. Método comprovado para iniciantes sem experiência. Garanta seu acesso com desconto!">
+    <meta name="keywords" content="Desenhando Sem Dom, Curso Desenhando Sem Dom, Art Rodrigues, Curso Art Rodrigues, desenho realista, aprender a desenhar, curso de desenho online">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -41,588 +40,28 @@
     
     <link rel="canonical" href="https://go.hotmart.com/S90920270F">
     
+    <!-- Preload de Fontes -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap"></noscript>
+    
+    <!-- Preload de Ícones -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    
+    <!-- CSS Inline (Otimizado) -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
-        
-        :root {
-            --primary: #E74C3C;
-            --primary-dark: #C0392B;
-            --secondary: #2C3E50;
-            --accent: #3498DB;
-            --accent-dark: #2980B9;
-            --light: #ECF0F1;
-            --dark: #2C3E50;
-            --text: #333333;
-            --gray: #95A5A6;
-            --light-gray: #F5F7FA;
-            --cta-color: #27AE60; /* Nova cor para o botão CTA */
-            --cta-dark: #219653; /* Tom mais escuro para hover */
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--light-gray);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 2.5em;
-            color: var(--primary);
-            margin: 0;
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-        
-        .logo span {
-            display: block;
-            font-size: 0.5em;
-            letter-spacing: 3px;
-            margin-top: 5px;
-            color: var(--secondary);
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .nav-btn {
-            padding: 12px 25px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .nav-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
-                        url('https://escolaartrodrigues.kpages.online/wp-content/uploads/sites/10844/2023/07/bg-desenhandosemdom.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 30px;
-        }
-        
-        .hero-description {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin: 40px auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* Features Section */
-        .features-section {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--primary);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5em;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .feature-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .feature-description {
-            color: var(--text);
-            line-height: 1.7;
-        }
-        
-        /* Promo Section */
-        .promo-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-        
-        .promo-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2em;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .promo-subtitle {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .timer {
-            display: flex;
-            justify-content: center;
-            font-size: 2em;
-            font-weight: 700;
-            margin: 30px 0;
-        }
-        
-        .timer div {
-            margin: 0 10px;
-            background: linear-gradient(135deg, var(--secondary), #34495e);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            min-width: 80px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .timer div:after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255,255,255,0.3) 0%,
-                rgba(255,255,255,0) 50%,
-                rgba(255,255,255,0.3) 100%
-            );
-            transform: rotate(30deg);
-            animation: shine 3s infinite;
-            animation-delay: calc(var(--i) * 0.5s);
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) rotate(30deg); }
-        }
-        
-        .price-comparison {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 40px 0;
-            gap: 30px;
-        }
-        
-        .old-price {
-            font-size: 1.8em;
-            text-decoration: line-through;
-            color: var(--light);
-            opacity: 0.8;
-        }
-        
-        .new-price {
-            font-size: 2.5em;
-            font-weight: 800;
-            color: white;
-        }
-        
-        .cta-btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background-color: var(--cta-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-            text-transform: uppercase;
-            margin-top: 20px;
-            border: 2px solid transparent;
-        }
-        
-        .cta-btn:hover {
-            background-color: var(--cta-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-            border-color: rgba(255,255,255,0.3);
-        }
-        
-        /* Testimonials */
-        .testimonials-section {
-            padding: 80px 0;
-            background-color: var(--light-gray);
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--light);
-            padding-bottom: 20px;
-        }
-        
-        .faq-question {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        
-        .faq-answer {
-            line-height: 1.7;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 50px 0 20px;
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 2em;
-            color: white;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-link {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-link:hover {
-            color: var(--primary);
-        }
-        
-        .copyright {
-            color: var(--gray);
-            font-size: 0.9em;
-            margin-top: 30px;
-        }
-        
-        /* Popup de Cookies Premium (ESTILO ORIGINAL) */
-        .cookie-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .cookie-popup {
-            background-color: white;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            text-align: center;
-            position: relative;
-            animation: fadeIn 0.5s ease;
-            border: 2px solid var(--primary);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 1.8em;
-            color: #7f8c8d;
-            cursor: pointer;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        
-        .close-btn:hover {
-            color: var(--primary);
-        }
-        
-        .cookie-popup h2 {
-            color: var(--secondary);
-            margin-top: 0;
-            font-size: 2em;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .cookie-popup p {
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-        
-        .cookie-btn {
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary), #e67e22);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        }
-        
-        .cookie-btn:hover {
-            background: linear-gradient(45deg, #c0392b, #d35400);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        }
-        
-        .policy-link {
-            color: var(--primary);
-            font-weight: 700;
-            text-decoration: none;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .policy-link:hover {
-            color: #c0392b;
-        }
-        
-        .policy-link:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--primary);
-            bottom: 0;
-            left: 0;
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        
-        .policy-link:hover:after {
-            transform: scaleX(1);
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .logo {
-                font-size: 2em;
-                text-align: center;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .hero-title {
-                font-size: 2em;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2em;
-            }
-            
-            .section-title {
-                font-size: 2em;
-            }
-            
-            .price-comparison {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .timer div {
-                margin: 0 5px;
-                padding: 10px 15px;
-                min-width: 60px;
-                font-size: 1.5em;
-            }
-            
-            .cookie-popup {
-                padding: 30px 20px;
-            }
-        }
+        :root{--primary:#E74C3C;--primary-dark:#C0392B;--secondary:#2C3E50;--accent:#3498DB;--accent-dark:#2980B9;--light:#ECF0F1;--dark:#2C3E50;--text:#333;--gray:#95A5A6;--light-gray:#F5F7FA;--cta-color:#27AE60;--cta-dark:#219653;--highlight:#FF8C00}body{margin:0;padding:0;font-family:'Open Sans',sans-serif;background-color:var(--light-gray);color:var(--text);line-height:1.6}.container{max-width:1200px;margin:0 auto;padding:0 20px}header{background-color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:20px 0;position:sticky;top:0;z-index:100}.header-content{display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.5em;color:var(--primary);margin:0;line-height:1;text-transform:uppercase;letter-spacing:-1px}.logo span{display:block;font-size:.5em;letter-spacing:3px;margin-top:5px;color:var(--secondary)}.nav-buttons{display:flex;gap:15px}.nav-btn{padding:12px 25px;background-color:var(--primary);color:#fff;text-decoration:none;border-radius:50px;font-weight:700;font-size:.9em;transition:all .3s ease;border:2px solid transparent}.nav-btn:hover{background-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 4px 8px rgba(231,76,60,.3)}.hero-section{background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url('https://escolaartrodrigues.kpages.online/wp-content/uploads/sites/10844/2023/07/bg-desenhandosemdom.jpg');background-size:cover;background-position:center;padding:80px 0;text-align:center}.hero-content{max-width:800px;margin:0 auto}.hero-title{font-family:'Montserrat',sans-serif;font-size:2.8em;font-weight:800;color:var(--secondary);margin-bottom:20px;line-height:1.2}.hero-subtitle{font-size:1.5em;font-weight:600;color:var(--primary);margin-bottom:30px}.hero-description{font-size:1.2em;margin-bottom:40px;line-height:1.8}.video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:40px auto;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.1)}.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.features-section{padding:80px 0;background-color:#fff}.section-title{text-align:center;font-family:'Montserrat',sans-serif;font-size:2.5em;font-weight:800;color:var(--secondary);margin-bottom:60px;position:relative}.section-title:after{content:'';position:absolute;width:100px;height:4px;background:var(--primary);bottom:-15px;left:50%;transform:translateX(-50%);border-radius:2px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:50px}.feature-card{background-color:#fff;border-radius:10px;padding:30px;box-shadow:0 5px 15px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--primary)}.feature-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.1)}.feature-icon{font-size:2.5em;color:var(--primary);margin-bottom:20px}.feature-title{font-family:'Montserrat',sans-serif;font-size:1.5em;font-weight:700;margin-bottom:15px;color:var(--secondary)}.feature-description{color:var(--text);line-height:1.7}.promo-section{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:60px 0;color:#fff;text-align:center}.promo-title{font-family:'Montserrat',sans-serif;font-size:2.2em;font-weight:800;margin-bottom:20px}.promo-subtitle{font-size:1.3em;margin-bottom:30px;max-width:700px;margin-left:auto;margin-right:auto}.timer{display:flex;justify-content:center;font-size:2em;font-weight:700;margin:30px 0}.timer div{margin:0 10px;background:linear-gradient(135deg,var(--secondary),#34495e);color:#fff;padding:15px 25px;border-radius:10px;min-width:80px;box-shadow:0 4px 10px rgba(0,0,0,.1);position:relative;overflow:hidden}.timer div:after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(to bottom right,rgba(255,255,255,.3) 0,rgba(255,255,255,0) 50%,rgba(255,255,255,.3) 100%);transform:rotate(30deg);animation:shine 3s infinite;animation-delay:calc(var(--i)*.5s)}@keyframes shine{0%{transform:translateX(-100%) rotate(30deg)}100%{transform:translateX(100%) rotate(30deg)}}.price-comparison{display:flex;justify-content:center;align-items:center;margin:40px 0;gap:30px}.old-price{font-size:1.8em;text-decoration:line-through;color:var(--light);opacity:.8}.new-price{font-size:2.5em;font-weight:800;color:#fff}.price-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:40px auto;max-width:800px}.price-plan{background:#fff;border-radius:15px;padding:30px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.1);position:relative}.price-plan.selected{border:3px solid var(--highlight);transform:scale(1.02)}.price-plan-title{font-family:'Montserrat',sans-serif;font-size:1.5em;color:var(--secondary);margin-bottom:15px}.price-plan-price{font-size:2.2em;font-weight:800;color:var(--primary);margin-bottom:20px}.price-plan-features{margin-bottom:25px;text-align:left}.price-plan-features li{margin-bottom:10px;position:relative;padding-left:25px}.price-plan-features li:before{content:'✓';position:absolute;left:0;color:var(--cta-color);font-weight:700}.cta-btn{display:inline-block;padding:18px 45px;background-color:var(--cta-color);color:#fff;text-decoration:none;border-radius:50px;font-weight:700;font-size:1.2em;transition:all .3s ease;box-shadow:0 4px 15px rgba(39,174,96,.3);text-transform:uppercase;margin-top:20px;border:2px solid transparent}.cta-btn:hover{background-color:var(--cta-dark);transform:translateY(-3px);box-shadow:0 6px 20px rgba(39,174,96,.4);border-color:hsla(0,0%,100%,.3)}.highlight-btn{background-color:var(--highlight);box-shadow:0 4px 15px rgba(255,140,0,.3)}.highlight-btn:hover{background-color:#e67e00}.testimonials-section{padding:80px 0;background-color:var(--light-gray)}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:50px}.testimonial-card{background-color:#fff;border-radius:10px;padding:30px;box-shadow:0 5px 15px rgba(0,0,0,.05)}.testimonial-text{font-style:italic;margin-bottom:20px;line-height:1.7}.testimonial-author{font-weight:700;color:var(--secondary)}.gallery-section{padding:80px 0;background-color:#fff}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin-top:40px}.gallery-item{border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:transform .3s}.gallery-item:hover{transform:scale(1.03)}.gallery-item img{width:100%;height:auto;display:block;object-fit:cover;min-height:200px}.instructor-section{padding:80px 0;background-color:var(--light-gray)}.instructor-content{display:flex;align-items:center;gap:40px}.instructor-image{flex:0 0 300px;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.1)}.instructor-image img{width:100%;height:auto;display:block}.instructor-bio{flex:1}.instructor-name{font-family:'Montserrat',sans-serif;font-size:2em;color:var(--secondary);margin-bottom:20px}.faq-section{padding:80px 0;background-color:#fff}.faq-item{margin-bottom:20px;border-bottom:1px solid var(--light);padding-bottom:20px}.faq-question{font-family:'Montserrat',sans-serif;font-size:1.3em;font-weight:700;color:var(--secondary);margin-bottom:10px;cursor:pointer;position:relative;padding-right:30px}.faq-question:after{content:'+';position:absolute;right:0;top:0;font-size:1.5em;color:var(--primary)}.faq-question.active:after{content:'-'}.faq-answer{line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease}.faq-answer.show{max-height:500px}.whatsapp-btn{position:fixed;bottom:30px;right:30px;background-color:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 5px 15px rgba(0,0,0,.2);z-index:99;transition:all .3s}.whatsapp-btn:hover{transform:scale(1.1);background-color:#128C7E}footer{background-color:var(--secondary);color:#fff;padding:50px 0 20px;text-align:center}.footer-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2em;color:#fff;margin-bottom:20px;text-transform:uppercase}.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:30px}.footer-link{color:#fff;text-decoration:none;transition:color .3s}.footer-link:hover{color:var(--primary)}.copyright{color:var(--gray);font-size:.9em;margin-top:30px}.cookie-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.85);display:flex;justify-content:center;align-items:center;z-index:1000}.cookie-popup{background-color:#fff;padding:40px;border-radius:20px;max-width:600px;width:90%;box-shadow:0 15px 40px rgba(0,0,0,.2);text-align:center;position:relative;animation:fadeIn .5s ease;border:2px solid var(--primary)}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.close-btn{position:absolute;top:20px;right:25px;font-size:1.8em;color:#7f8c8d;cursor:pointer;font-weight:700;transition:color .3s}.close-btn:hover{color:var(--primary)}.cookie-popup h2{color:var(--secondary);margin-top:0;font-size:2em;font-weight:700;margin-bottom:20px}.cookie-popup p{margin-bottom:30px;font-size:1.1em;line-height:1.8}.cookie-btn{padding:15px 40px;background:linear-gradient(45deg,var(--primary),#e67e22);color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.1em;cursor:pointer;transition:all .3s;box-shadow:0 4px 15px rgba(231,76,60,.3)}.cookie-btn:hover{background:linear-gradient(45deg,#c0392b,#d35400);transform:translateY(-3px);box-shadow:0 6px 20px rgba(231,76,60,.4)}.policy-link{color:var(--primary);font-weight:700;text-decoration:none;transition:color .3s;position:relative}.policy-link:hover{color:#c0392b}.policy-link:after{content:'';position:absolute;width:100%;height:2px;background:var(--primary);bottom:0;left:0;transform:scaleX(0);transition:transform .3s}.policy-link:hover:after{transform:scaleX(1)}@media (max-width:768px){.header-content{flex-direction:column;gap:20px}.logo{font-size:2em;text-align:center}.nav-buttons{flex-direction:column;width:100%}.nav-btn{width:100%;text-align:center}.hero-title{font-size:2em}.hero-subtitle{font-size:1.2em}.section-title{font-size:2em}.price-comparison{flex-direction:column;gap:10px}.timer div{margin:0 5px;padding:10px 15px;min-width:60px;font-size:1.5em}.instructor-content{flex-direction:column}.instructor-image{flex:0 0 auto;max-width:300px;margin-bottom:30px}.cookie-popup{padding:30px 20px}}
     </style>
+    
+    <!-- Título Otimizado para SEO -->
+    <title>Curso Desenhando Sem Dom | Aprenda Desenho Realista do Zero com Art Rodrigues</title>
 </head>
 <body>
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=5531991953885" class="whatsapp-btn" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -645,10 +84,10 @@
                 <p class="hero-description">No curso Desenhando sem DOM você vai descobrir o método passo a passo para criar desenhos realistas impressionantes, mesmo sem ter "dom" ou experiência prévia.</p>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/LUH0V9I8BLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/LUH0V9I8BLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
                 
-                <a href="https://go.hotmart.com/S90920270F" class="cta-btn">Quero Aprender a Desenhar Agora</a>
+                <a href="#pricing" class="cta-btn highlight-btn">Quero Aprender a Desenhar Agora</a>
             </div>
         </div>
     </section>
@@ -661,38 +100,74 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">✏️</div>
-                    <h3 class="feature-title">Técnicas Básicas</h3>
-                    <p class="feature-description">Domine os fundamentos do desenho realista, desde o traço até o sombreamento, mesmo que você esteja começando do zero.</p>
+                    <h3 class="feature-title">Materiais, Acessórios e Referência</h3>
+                    <p class="feature-description">Aqui irei te Ensinar tudo a Respeito de Material desde o Básico ao Avançado e você nunca mais será enrolado por ninguém e aprenderá todos os macetes.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Uso de Cores</h3>
-                    <p class="feature-description">Aprenda a usar lápis de cor de forma profissional para criar efeitos realistas e profundidade em seus desenhos.</p>
+                    <h3 class="feature-title">Esboço</h3>
+                    <p class="feature-description">Já Imaginou não ter mais Dificuldade ao Esboçar qualquer coisa? Sim, nesse Módulo irei te Ensinar do Absoluto Zero todas as Técnicas Usadas por Profissionais.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">👁️</div>
-                    <h3 class="feature-title">Observação</h3>
-                    <p class="feature-description">Desenvolva sua capacidade de observar detalhes e reproduzi-los no papel com precisão.</p>
+                    <h3 class="feature-title">Estudo de Pintura</h3>
+                    <p class="feature-description">Tem Dificuldade em Colorir? Após assistir a esse Módulo eu Dúvido você não aprender todas as Técnicas principais para fazer Pintura Lisa, Homogénea e bem Chamativas com material simples.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🖼️</div>
-                    <h3 class="feature-title">Composição</h3>
-                    <p class="feature-description">Aprenda a compor cenas completas e harmoniosas, equilibrando todos os elementos do desenho.</p>
+                    <h3 class="feature-title">Ilustração e Semi Realismo</h3>
+                    <p class="feature-description">Antes de Começar com o mais Dificil, quero te Ensinar com o básico que vai te fazer entender lá na frente o quão é importante esse Estilo de Desenho pra aprender a Base do Realismo e se Destacar.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title">Processo Completo</h3>
-                    <p class="feature-description">Desde o esboço inicial até os detalhes finais, veja o processo completo de criação de um desenho realista.</p>
+                    <div class="feature-icon">👄</div>
+                    <h3 class="feature-title">Olhos e Boca</h3>
+                    <p class="feature-description">Agora que já aprendemos o básico, vamos passar pra um nível mais elevado só que aos poucos, ou melhor se dizendo em partes.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h3 class="feature-title">Dicas Exclusivas</h3>
-                    <p class="feature-description">Acesse dicas e truques que os profissionais usam para criar desenhos impressionantes.</p>
+                    <div class="feature-icon">💇</div>
+                    <h3 class="feature-title">Tipos de Cabelos e Barba</h3>
+                    <p class="feature-description">Nesse módulo você vai aprender todos os Principais Tipos de Cabelo e assim não ter mais Dúvidas quando estiver fazendo o seu Personagem Favorito.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3 class="feature-title">Realismo Personagens Completos</h3>
+                    <p class="feature-description">O módulo mais Transformador e que só cresce a cada Ano com Novos Personagens, aqui você vai Aprender desde a Bolinha do Olho até a Finalização Completa do Personagem tudo em Tempo Real.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌈</div>
+                    <h3 class="feature-title">Pele Colorida</h3>
+                    <p class="feature-description">Assim como o módulo anterior, nesse quero te ensinar da mesma maneira mais agora com um Diferencial que é uma Pele Colorida.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Pintura Metálica</h3>
+                    <p class="feature-description">Nesse Módulo quero te Ensinar um Estilo de Pintura bem diferente que Reflete e que tem um Aspecto bem Realista, e você vai ver o quão fácil é esse Estilo e ainda mais de não exigir muito Material.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🐾</div>
+                    <h3 class="feature-title">Pintura de Animais (PELOS e PENAS)</h3>
+                    <p class="feature-description">Sabe aquela Dificuldade em fazer Pelos ou Penas? após esse Módulo você vai ver como é fácil esse Estilo de Arte e entender o por que faz tanto Sucesso também principalmente na Hora de Vender as tuas Artes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-title">Fundos com Aerógrafo e Spray</h3>
+                    <p class="feature-description">Sabia que além de fazer alguns fundos a lápis você pode usar Tinta de Diversas Formas, e usar até Spray sim, é uma forma até mais rápida que as demais e a que mais uso em quase todo Desenho.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3 class="feature-title">Bônus Aulas Adicionais</h3>
+                    <p class="feature-description">23 Aulas Antigas que foram Removidas da Grade e Desenhando em Tempo Real sem Narração.</p>
                 </div>
             </div>
         </div>
@@ -711,11 +186,118 @@
             </div>
             
             <div class="price-comparison">
-                <div class="old-price">De R$ 497,00</div>
-                <div class="new-price">Por R$ 197,00</div>
+                <div class="old-price">De R$ 600,00</div>
+                <div class="new-price">Por R$ 300,00</div>
             </div>
             
-            <a href="https://go.hotmart.com/S90920270F" class="cta-btn">Quero Me Inscrever Agora</a>
+            <a href="#pricing" class="cta-btn highlight-btn">Quero Me Inscrever Agora</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Escolha Seu Plano</h2>
+            
+            <div class="price-plans">
+                <div class="price-plan selected" id="bienal-plan">
+                    <h3 class="price-plan-title">Plano Bienal</h3>
+                    <div class="price-plan-price">R$ 150,00</div>
+                    <ul class="price-plan-features">
+                        <li>Curso Completo por 2 Anos</li>
+                        <li>Atualizações Gratuitas</li>
+                        <li>Suporte por 1 Ano</li>
+                        <li>Grupo Exclusivo</li>
+                    </ul>
+                    <a href="https://go.hotmart.com/S90920270F?ap=ca82" class="cta-btn">Testar por 7 Dias</a>
+                </div>
+                
+                <div class="price-plan" id="vitalicio-plan">
+                    <h3 class="price-plan-title">Plano Vitalício</h3>
+                    <div class="price-plan-price">R$ 300,00</div>
+                    <ul class="price-plan-features">
+                        <li>Curso Completo para Sempre</li>
+                        <li>Atualizações Gratuitas</li>
+                        <li>Suporte por 1 Ano</li>
+                        <li>Grupo Exclusivo</li>
+                        <li>Acesso Ilimitado</li>
+                    </ul>
+                    <a href="https://go.hotmart.com/S90920270F?ap=80a0" class="cta-btn highlight-btn">Testar por 7 Dias</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor-section">
+        <div class="container">
+            <h2 class="section-title">Conheça o Professor</h2>
+            
+            <div class="instructor-content">
+                <div class="instructor-image">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/7088769/image11.jpg" alt="Art Rodrigues - Professor do curso Desenhando sem DOM" loading="lazy">
+                </div>
+                <div class="instructor-bio">
+                    <h3 class="instructor-name">Art Rodrigues</h3>
+                    <p>Desenhista e criador de conteúdo, desde criança eu sempre me interessei por desenhos, minha essência veio da Ilustração, dai logo após fiquei Especialista no Grafite de rua e só no ano de 2013 conheci o desenho realista, uma arte que me apaixonei dia após dia e com muita dedicação, foco e disciplina hoje sou especializado no assunto e tenho muita facilidade em ensinar e mostrar que não precisa ter Dom para fazer Desenhos incríveis e melhor ainda com material Escolar, te mostrando que o limite entre você e o Desenho esta apenas no seu querer em Aprender.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Meus Trabalhos</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121168/img_5432.png" alt="Desenho realista exemplo 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121147/img_5434.png" alt="Desenho realista exemplo 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121192/dscf9386.jpg" alt="Desenho realista exemplo 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382529/art_rodrigues_(@tyagorodri)__fotos_e_vdeos_do_instagram_-_google_chrome_12_11_2021_13_10_15_(2).png" alt="Desenho realista exemplo 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/9213354/savevid.net_269617728_5298337960193222_3748073826120863152_n.jpg" alt="Desenho realista exemplo 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121161/img_5433.png" alt="Desenho realista exemplo 6" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Gallery Section -->
+    <section class="gallery-section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">Evolução dos Nossos Alunos</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370757/img_5218.jpg" alt="Desenho de aluno antes e depois 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370769/img_5223.jpg" alt="Desenho de aluno antes e depois 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382596/img_5225.jpg" alt="Desenho de aluno antes e depois 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4396797/img_5358.jpg" alt="Desenho de aluno antes e depois 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/5400154/img_5343.jpg" alt="Desenho de aluno antes e depois 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370765/img_5221.jpg" alt="Desenho de aluno antes e depois 6" loading="lazy">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -749,28 +331,73 @@
             <h2 class="section-title">Perguntas Frequentes</h2>
             
             <div class="faq-item">
+                <h3 class="faq-question">É Pago Somente uma Vez?</h3>
+                <div class="faq-answer">
+                    <p>Sim, e você pode Parcelar em até 12x</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Terei Acesso as Atualizações Futuras?</h3>
+                <div class="faq-answer">
+                    <p>Sim, sem pagar nada a mais por isso</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">O curso é recomendado para Iniciantes?</h3>
+                <div class="faq-answer">
+                    <p>Sim, 100% recomendado para quem nunca desenhou.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Consigo acessar pelo celular?</h3>
+                <div class="faq-answer">
+                    <p>Sim, e se baixar o app Sparkle, consegue salvar as aulas para assistir offline, como no app do Netflix por exemplo.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Por quanto tempo terei acesso ao curso?</h3>
+                <div class="faq-answer">
+                    <p>O Acesso ao Curso é de 2 Anos no plano bienal e vitalício no plano vitalício. O Suporte tem Duração de 1 Ano podendo haver Renovação.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
                 <h3 class="faq-question">Preciso ter algum talento natural para fazer o curso?</h3>
-                <p class="faq-answer">Não! O curso foi desenvolvido especificamente para pessoas sem experiência ou que acreditam não ter "dom" para desenho. Nós te ensinamos tudo do zero.</p>
+                <div class="faq-answer">
+                    <p>Não! O curso foi desenvolvido especificamente para pessoas sem experiência ou que acreditam não ter "dom" para desenho. Nós te ensinamos tudo do zero.</p>
+                </div>
             </div>
             
             <div class="faq-item">
                 <h3 class="faq-question">Quanto tempo preciso dedicar por semana?</h3>
-                <p class="faq-answer">Recomendamos pelo menos 2-3 horas por semana para praticar, mas você pode avançar no seu próprio ritmo. O acesso é vitalício!</p>
+                <div class="faq-answer">
+                    <p>Recomendamos pelo menos 2-3 horas por semana para praticar, mas você pode avançar no seu próprio ritmo.</p>
+                </div>
             </div>
             
             <div class="faq-item">
                 <h3 class="faq-question">Quais materiais vou precisar?</h3>
-                <p class="faq-answer">Apenas lápis comum, papel e lápis de cor básicos. Não precisa de materiais caros! Enviamos uma lista completa após a inscrição.</p>
+                <div class="faq-answer">
+                    <p>Apenas lápis comum, papel e lápis de cor básicos. Não precisa de materiais caros! Enviamos uma lista completa após a inscrição.</p>
+                </div>
             </div>
             
             <div class="faq-item">
                 <h3 class="faq-question">Há garantia de satisfação?</h3>
-                <p class="faq-answer">Sim! Oferecemos 7 dias de garantia incondicional. Se não gostar do curso, devolvemos seu dinheiro sem perguntas.</p>
+                <div class="faq-answer">
+                    <p>Sim! Oferecemos 7 dias de garantia incondicional. Se não gostar do curso, devolvemos seu dinheiro sem perguntas.</p>
+                </div>
             </div>
             
             <div class="faq-item">
                 <h3 class="faq-question">Como recebo acesso ao curso?</h3>
-                <p class="faq-answer">Imediatamente após a confirmação do pagamento, você recebe um e-mail com acesso à plataforma de alunos, disponível 24h por dia.</p>
+                <div class="faq-answer">
+                    <p>Imediatamente após a confirmação do pagamento, você recebe um e-mail com acesso à plataforma de alunos, disponível 24h por dia.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -781,7 +408,7 @@
             <h2 class="promo-title">Não Deixe para Depois!</h2>
             <p class="promo-subtitle">Comece hoje mesmo sua jornada no desenho realista com nosso método comprovado</p>
             
-            <a href="https://go.hotmart.com/S90920270F" class="cta-btn">Quero Aprender a Desenhar Agora</a>
+            <a href="#pricing" class="cta-btn highlight-btn">Quero Aprender a Desenhar Agora</a>
         </div>
     </section>
 
@@ -803,13 +430,17 @@
     <!-- Popup de Cookies Premium (ESTILO ORIGINAL) -->
     <div id="cookieOverlay" class="cookie-overlay">
         <div class="cookie-popup">
-            <span class="close-btn" onclick="closeCookiePopup()">×</span>
+            <span class="close-btn" onclick="window.location.href='https://go.hotmart.com/S90920270F'">×</span>
             <h2>Política de Cookies</h2>
             <p>Este site usa cookies para personalizar conteúdo e anúncios, fornecer recursos de mídia social e analisar nosso tráfego. Ao clicar em Aceitar, você concorda com o uso de cookies. Para mais informações, por favor visite nossa <a href="https://go.hotmart.com/S90920270F" class="policy-link">Política de Cookies</a></p>
-            <button class="cookie-btn" onclick="acceptCookies()">Aceitar</button>
+            <button class="cookie-btn" onclick="window.location.href='https://go.hotmart.com/S90920270F'">Aceitar</button>
         </div>
     </div>
 
+    <!-- Font Awesome via CDN (versão otimizada) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- JavaScript Otimizado -->
     <script>
         // Timer countdown real (funcionando com horas, minutos e segundos)
         function updateTimer() {
@@ -849,30 +480,49 @@
         // Inicia o timer (atualiza a cada segundo)
         setInterval(updateTimer, 1000);
         
-        // Cookie functions (ESTILO ORIGINAL)
-        function closeCookiePopup() {
-            document.getElementById('cookieOverlay').style.display = 'none';
-            window.location.href = "https://go.hotmart.com/S90920270F";
-        }
-        
-        function acceptCookies() {
-            document.getElementById('cookieOverlay').style.display = 'none';
-            localStorage.setItem('cookiesAccepted', 'true');
-            window.location.href = "https://go.hotmart.com/S90920270F";
-        }
-        
-        // Mostrar popup se cookies não foram aceitos
+        // Seleção de plano
         document.addEventListener('DOMContentLoaded', function() {
+            const bienalPlan = document.getElementById('bienal-plan');
+            const vitalicioPlan = document.getElementById('vitalicio-plan');
+            
+            // Seleciona o plano bienal por padrão
+            bienalPlan.classList.add('selected');
+            
+            // Alternar entre planos
+            bienalPlan.addEventListener('click', function(e) {
+                if(e.target.tagName !== 'A') {
+                    bienalPlan.classList.add('selected');
+                    vitalicioPlan.classList.remove('selected');
+                }
+            });
+            
+            vitalicioPlan.addEventListener('click', function(e) {
+                if(e.target.tagName !== 'A') {
+                    vitalicioPlan.classList.add('selected');
+                    bienalPlan.classList.remove('selected');
+                }
+            });
+            
+            // Mostrar popup se cookies não foram aceitos
             if (localStorage.getItem('cookiesAccepted') !== 'true') {
                 document.getElementById('cookieOverlay').style.display = 'flex';
             }
-        });
-        
-        // Smooth scroll for FAQ questions
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    question.classList.toggle('active');
+                    
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        answer.classList.remove('show');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.classList.add('show');
+                    }
+                });
             });
         });
     </script>
@@ -901,7 +551,60 @@
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "ratingCount": "127"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Art Rodrigues"
       }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "É Pago Somente uma Vez?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, e você pode Parcelar em até 12x"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Terei Acesso as Atualizações Futuras?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, sem pagar nada a mais por isso"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O curso é recomendado para Iniciantes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, 100% recomendado para quem nunca desenhou."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Consigo acessar pelo celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, e se baixar o app Sparkle, consegue salvar as aulas para assistir offline, como no app do Netflix por exemplo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por quanto tempo terei acesso ao curso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Acesso ao Curso é de 2 Anos no plano bienal e vitalício no plano vitalício. O Suporte tem Duração de 1 Ano podendo haver Renovação."
+          }
+        }
+      ]
     }
     </script>
 </body>
