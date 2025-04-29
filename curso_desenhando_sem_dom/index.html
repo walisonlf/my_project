@@ -43,8 +43,12 @@
     <meta property="twitter:image" content="https://escolaartrodrigues.kpages.online/wp-content/uploads/sites/10844/2023/07/bg-desenhandosemdom.jpg">
 
     <!-- Preload de Recursos Críticos -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </noscript>
     
     <!-- CSS Otimizado e Minificado -->
     <style>
@@ -53,8 +57,8 @@
 </head>
 <body>
     <!-- WhatsApp Button -->
-    <a href="https://api.whatsapp.com/send?phone=5511914618282" class="whatsapp-btn" target="_blank" aria-label="Fale conosco no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://api.whatsapp.com/send?phone=5511914618282" class="whatsapp-btn" target="_blank" aria-label="Fale conosco no WhatsApp" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <!-- Header -->
@@ -79,7 +83,7 @@
                 <p class="hero-description">No curso Desenhando sem DOM você vai descobrir o método passo a passo para criar desenhos realistas impressionantes, mesmo sem ter "dom" ou experiência prévia.</p>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/LUH0V9I8BLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/LUH0V9I8BLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" title="Vídeo de apresentação do curso Desenhando sem DOM"></iframe>
                 </div>
                 
                 <a href="#pricing" class="cta-btn highlight-btn">Quero Aprender a Desenhar Agora</a>
@@ -93,8 +97,41 @@
             <h2 class="section-title">O Que Você Vai Aprender</h2>
             
             <div class="features-grid">
-                <!-- Cards de features mantidos conforme original -->
-                <!-- ... (conteúdo original dos cards) ... -->
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h3 class="feature-title">Técnicas Básicas</h3>
+                    <p class="feature-description">Domine os fundamentos do desenho realista, desde o traço até o sombreamento, mesmo que você nunca tenha desenhado antes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                    <h3 class="feature-title">Percepção Visual</h3>
+                    <p class="feature-description">Aprenda a enxergar como um artista e capturar detalhes que fazem a diferença entre um desenho comum e um realista impressionante.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="feature-title">Materiais Escolares</h3>
+                    <p class="feature-description">Descubra como criar obras incríveis usando apenas materiais simples que você já tem em casa ou pode comprar em qualquer papelaria.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-portrait"></i></div>
+                    <h3 class="feature-title">Retratos Realistas</h3>
+                    <p class="feature-description">Técnicas passo a passo para desenhar rostos com proporções perfeitas e expressões que parecem ganhar vida no papel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="feature-title">Luz e Sombra</h3>
+                    <p class="feature-description">Domine o jogo de luzes e sombras que dá volume e profundidade aos seus desenhos, criando efeitos tridimensionais impressionantes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="feature-title">Método Comprovado</h3>
+                    <p class="feature-description">Aprenda com um método testado e aprovado por milhares de alunos que transformaram seu interesse em desenho em habilidade real.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -161,7 +198,7 @@
             
             <div class="instructor-content">
                 <div class="instructor-image">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/7088769/image11.jpg" alt="Art Rodrigues - Professor do curso Desenhando sem DOM" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/7088769/image11.jpg" alt="Art Rodrigues - Professor do curso Desenhando sem DOM" loading="lazy" width="300" height="300">
                 </div>
                 <div class="instructor-bio">
                     <h3 class="instructor-name">Art Rodrigues</h3>
@@ -178,22 +215,22 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121168/img_5432.png" alt="Desenho realista exemplo 1 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121168/img_5432.png" alt="Desenho realista exemplo 1 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121147/img_5434.png" alt="Desenho realista exemplo 2 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121147/img_5434.png" alt="Desenho realista exemplo 2 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121192/dscf9386.jpg" alt="Desenho realista exemplo 3 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121192/dscf9386.jpg" alt="Desenho realista exemplo 3 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382529/art_rodrigues_(@tyagorodri)__fotos_e_vdeos_do_instagram_-_google_chrome_12_11_2021_13_10_15_(2).png" alt="Desenho realista exemplo 4 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382529/art_rodrigues_(@tyagorodri)__fotos_e_vdeos_do_instagram_-_google_chrome_12_11_2021_13_10_15_(2).png" alt="Desenho realista exemplo 4 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/9213354/savevid.net_269617728_5298337960193222_3748073826120863152_n.jpg" alt="Desenho realista exemplo 5 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/9213354/savevid.net_269617728_5298337960193222_3748073826120863152_n.jpg" alt="Desenho realista exemplo 5 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121161/img_5433.png" alt="Desenho realista exemplo 6 - Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/6121161/img_5433.png" alt="Desenho realista exemplo 6 - Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
             </div>
         </div>
@@ -206,22 +243,22 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370757/img_5218.jpg" alt="Antes e Depois - Aluno 1 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370757/img_5218.jpg" alt="Antes e Depois - Aluno 1 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370769/img_5223.jpg" alt="Antes e Depois - Aluno 2 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370769/img_5223.jpg" alt="Antes e Depois - Aluno 2 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382596/img_5225.jpg" alt="Antes e Depois - Aluno 3 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4382596/img_5225.jpg" alt="Antes e Depois - Aluno 3 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4396797/img_5358.jpg" alt="Antes e Depois - Aluno 4 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4396797/img_5358.jpg" alt="Antes e Depois - Aluno 4 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/5400154/img_5343.jpg" alt="Antes e Depois - Aluno 5 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/5400154/img_5343.jpg" alt="Antes e Depois - Aluno 5 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370765/img_5221.jpg" alt="Antes e Depois - Aluno 6 do Curso Desenhando Sem Dom" loading="lazy">
+                    <img src="https://static-public.pages.hotmart.com/uploads/media/file/4370765/img_5221.jpg" alt="Antes e Depois - Aluno 6 do Curso Desenhando Sem Dom" loading="lazy" width="250" height="250">
                 </div>
             </div>
         </div>
@@ -257,15 +294,46 @@
             <h2 class="section-title">Perguntas Frequentes</h2>
             
             <div class="faq-item">
+                <h3 class="faq-question">Preciso ter Dom para fazer o curso?</h3>
+                <div class="faq-answer">
+                    <p>Não! O curso foi feito exatamente para pessoas que querem aprender do zero, sem nenhuma experiência ou "Dom" para desenhar.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Quanto tempo preciso para ver resultados?</h3>
+                <div class="faq-answer">
+                    <p>Com o método passo a passo, muitos alunos veem resultados significativos já nas primeiras semanas de prática.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">Quais materiais vou precisar?</h3>
+                <div class="faq-answer">
+                    <p>Materiais simples como lápis comum, borracha e papel sulfite. Não precisa de materiais caros ou profissionais para começar.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
                 <h3 class="faq-question">É Pago Somente uma Vez?</h3>
                 <div class="faq-answer">
                     <p>Sim, e você pode Parcelar em até 12x</p>
                 </div>
             </div>
             
-            <!-- Outras perguntas frequentes mantidas conforme original -->
-            <!-- ... -->
+            <div class="faq-item">
+                <h3 class="faq-question">Como funciona a garantia?</h3>
+                <div class="faq-answer">
+                    <p>Você tem 7 dias para testar o curso e, se não gostar, pode solicitar o reembolso total sem burocracia.</p>
+                </div>
+            </div>
             
+            <div class="faq-item">
+                <h3 class="faq-question">Por quanto tempo tenho acesso?</h3>
+                <div class="faq-answer">
+                    <p>Depende do plano escolhido: 2 anos no plano Bienal ou acesso vitalício no plano Vitalício.</p>
+                </div>
+            </div>
         </div>
     </section>
 
