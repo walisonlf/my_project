@@ -1,96 +1,641 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17037075658"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17037075658');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site em Construção</title>
+    <title>WF Contabilidade - Soluções Contábeis Completa</title>
+    <meta name="description" content="Consultoria contábil especializada em gestão fiscal, tributária e empresarial para seu negócio crescer com segurança.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        :root {
+            --primary: #2A5C9A;
+            --secondary: #1E3F6F;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+            --dark-gray: #333333;
+            --accent: #FF6B00;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-align: center;
+            box-sizing: border-box;
         }
         
-        .container {
-            max-width: 600px;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        
-        p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-gray);
             line-height: 1.6;
         }
         
-        .icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(42, 92, 154, 0.8), rgba(42, 92, 154, 0.8)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--light);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* Services */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .testimonials .section-title h2,
+        .testimonials .section-title p {
+            color: var(--light);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 0 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(42, 92, 154, 0.9), rgba(42, 92, 154, 0.9)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            color: var(--light);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--light);
         }
         
         .social-links {
-            margin-top: 30px;
+            display: flex;
+            gap: 15px;
         }
         
         .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: all 0.3s ease;
+            color: var(--light);
+            font-size: 20px;
+            transition: color 0.3s;
         }
         
         .social-links a:hover {
-            transform: translateY(-3px);
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--light);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                max-width: 200px;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="icon">
-            <i class="fas fa-tools"></i>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">WF<span>Contabilidade</span></a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-        <h1>Estamos Trabalhando Nisso!</h1>
-        <p>Nosso site está passando por uma reformulação incrível para trazer a melhor experiência para você. Volte em breve para conferir as novidades!</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Soluções Contábeis para o Seu Negócio</h1>
+            <p>Consultoria especializada em gestão fiscal e tributária para sua empresa crescer com segurança e conformidade legal.</p>
+            <a href="#contact" class="btn">Solicite um Orçamento</a>
+            <a href="https://wa.me/5531991953885" class="btn btn-outline">Fale pelo WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que escolher a WF Contabilidade?</h2>
+                <p>Nossos diferenciais que fazem a diferença para o seu negócio</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Agilidade</h3>
+                    <p>Processos otimizados para entregar resultados rápidos sem perder a qualidade.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Segurança</h3>
+                    <p>Todos os processos com total sigilo e conformidade com a legislação vigente.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Consultores dedicados para entender as necessidades específicas do seu negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Soluções completas para sua empresa em todas as áreas contábeis</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Abertura de Empresas</h3>
+                        <p>Todo o processo de constituição da sua empresa com assessoria completa para escolha do melhor regime tributário.</p>
+                        <a href="#contact" class="btn" style="margin-top: 15px; display: inline-block;">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Planejamento Tributário</h3>
+                        <p>Estratégias para redução legal da carga tributária, adequando-se ao melhor regime para seu negócio.</p>
+                        <a href="#contact" class="btn" style="margin-top: 15px; display: inline-block;">Saiba Mais</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Folha de Pagamento</h3>
+                        <p>Gestão completa da folha de pagamento, incluindo cálculos, relatórios e envio de obrigações acessórias.</p>
+                        <a href="#contact" class="btn" style="margin-top: 15px; display: inline-block;">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que nossos clientes dizem</h2>
+                <p>Depoimentos de quem já confia na nossa expertise</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"A WF Contabilidade transformou nossa gestão fiscal, reduzindo custos e trazendo mais segurança para nossas operações. Recomendo!"</p>
+                    <p class="testimonial-author">- Carlos Silva, Empresa XYZ</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Atendimento diferenciado e sempre com soluções personalizadas para nosso negócio. Parceiros essenciais para nosso crescimento."</p>
+                    <p class="testimonial-author">- Ana Oliveira, ABC Comércio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para simplificar sua contabilidade?</h2>
+            <p>Entre em contato agora mesmo e descubra como podemos ajudar seu negócio.</p>
+            <a href="#contact" class="btn">Fale com um Especialista</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>WF Contabilidade</h3>
+                    <p>Soluções contábeis completas para sua empresa crescer com segurança e conformidade legal.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/5531991953885"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Abertura de Empresas</a></li>
+                        <li><a href="#">Planejamento Tributário</a></li>
+                        <li><a href="#">Folha de Pagamento</a></li>
+                        <li><a href="#">Consultoria Empresarial</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (31) 99195-3885</li>
+                        <li><i class="fas fa-envelope"></i> contato@wfdigital.online</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 WF Contabilidade. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
         
-        <div class="social-links">
-            <p>Siga-nos nas redes sociais:</p>
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </div>
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Simple testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.style.display = 'none';
+            });
+            
+            testimonials[index].style.display = 'block';
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Initialize
+        showTestimonial(0);
+        setInterval(nextTestimonial, 5000);
+    </script>
 </body>
 </html>
