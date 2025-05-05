@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial | WF Contabilidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a5c9a;
+            --primary-light: #3a7bc8;
+            --secondary: #f8b400;
+            --dark: #1a2b50;
+            --light: #ffffff;
+            --gray: #f5f7fa;
+            --text: #4a4a4a;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--gray);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: var(--light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--light);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--light);
+            transform: skewY(-2deg);
+            z-index: 1;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            margin: 20px 0 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .client-info {
+            background: var(--gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            margin-bottom: 8px;
+        }
+        
+        .info-item strong {
+            display: inline-block;
+            min-width: 120px;
+            font-weight: 500;
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            font-size: 20px;
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .pricing-section {
+            background: var(--gray);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .service-name {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background-color: rgba(248, 180, 0, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--secondary);
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .terms {
+            font-size: 13px;
+            color: #666;
+            margin-top: 30px;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .signature-block {
+            text-align: center;
+        }
+        
+        .signature-line {
+            height: 1px;
+            background-color: var(--text);
+            margin: 40px 0 10px;
+            position: relative;
+        }
+        
+        .signature-line::before {
+            content: "Assinatura";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--light);
+            padding: 0 15px;
+            font-size: 12px;
+            color: var(--text);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark);
+            color: var(--light);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px;
+            }
+            
+            .client-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .signature-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">WF <span>CONTABILIDADE</span></div>
+            <div class="title">PROPOSTA COMERCIAL</div>
+            <div class="subtitle">Migração de MEI para ME e Serviços Contábeis Mensais</div>
+        </div>
+        
+        <div class="content">
+            <div class="client-info">
+                <div>
+                    <p class="info-item"><strong>Cliente:</strong> ELISANGELA VIEIRA DE SOUZA</p>
+                    <p class="info-item"><strong>CNPJ:</strong> 26.419.139/0001-68</p>
+                </div>
+                <div>
+                    <p class="info-item"><strong>Data:</strong> <script>document.write(new Date().toLocaleDateString('pt-BR'))</script></p>
+                    <p class="info-item"><strong>Responsável:</strong> Walison Leopoldino Ferreira</p>
+                </div>
+            </div>
+            
+            <h2>1. SERVIÇOS PARA MIGRAÇÃO DE MEI PARA ME</h2>
+            
+            <p>Processo completo de migração do MEI para Microempresa (ME) no Simples Nacional, incluindo:</p>
+            
+            <ul>
+                <li>Análise e planejamento tributário para o novo enquadramento</li>
+                <li>Baixa do MEI no sistema da Prefeitura e Receita Federal</li>
+                <li>Inscrição municipal, estadual e federal como ME</li>
+                <li>Orientação sobre obtenção do Certificado Digital (e-CNPJ)</li>
+                <li>Emissão de alvarás necessários</li>
+                <li>Enquadramento no CNAE adequado</li>
+                <li>Regularização cadastral em todos os órgãos</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>Observação:</strong> As taxas de órgãos públicos e o certificado digital não estão incluídos no valor da proposta e deverão ser custeados diretamente pelo cliente.</p>
+            </div>
+            
+            <h2>2. SERVIÇOS CONTÁBEIS MENSAL</h2>
+            
+            <h3>Departamento Contábil</h3>
+            <ul>
+                <li>Escrituração contábil completa</li>
+                <li>Emissão de relatórios contábeis</li>
+                <li>Conciliação bancária</li>
+                <li>Balanço patrimonial</li>
+                <li>Demonstração do resultado do exercício</li>
+            </ul>
+            
+            <h3>Departamento Fiscal</h3>
+            <ul>
+                <li>Emissão e envio de todas as obrigações acessórias</li>
+                <li>Cálculo e emissão de guias de impostos</li>
+                <li>Envio do DAS (Documento de Arrecadação do Simples Nacional)</li>
+                <li>Envio da DCTFWeb</li>
+                <li>Envio do eSocial</li>
+                <li>SPED Fiscal e Contribuições quando aplicável</li>
+                <li>Emissão de relatórios fiscais</li>
+            </ul>
+            
+            <h3>Departamento Pessoal</h3>
+            <ul>
+                <li>Folha de pagamento (pró-labore)</li>
+                <li>Emissão de guias e relatórios</li>
+                <li>Envio de obrigações acessórias (eSocial)</li>
+                <li>Cálculo de férias, 13º salário e rescisões (se aplicável)</li>
+                <li>Orientação sobre legislação trabalhista</li>
+            </ul>
+            
+            <div class="pricing-section">
+                <h2>INVESTIMENTO</h2>
+                
+                <div class="price-box">
+                    <div class="service-name">Migração MEI → ME</div>
+                    <div class="price">R$ 500,00</div>
+                </div>
+                <p class="note">50% no início do serviço e 50% após conclusão (taxas de órgãos públicos não inclusas)</p>
+                
+                <div class="price-box">
+                    <div class="service-name">Serviços Contábeis Mensais</div>
+                    <div class="price">R$ 400,00/mês</div>
+                </div>
+                <p class="note">Pagamento realizado 1 vez por mês | Contrato mínimo de 3 meses | Reajuste anual pelo IPCA</p>
+            </div>
+            
+            <h2>3. CONDIÇÕES GERAIS</h2>
+            <ul>
+                <li>Esta proposta tem validade de 15 dias a partir da data de emissão</li>
+                <li>O prazo para conclusão da migração é de aproximadamente 20 dias úteis após a entrega de toda documentação necessária</li>
+                <li>O cliente deverá providenciar o certificado digital (e-CNPJ) para que possamos dar continuidade aos serviços</li>
+                <li>Serviços não previstos nesta proposta serão orçados separadamente</li>
+                <li>No mês de dezembro será cobrado valor adicional equivalente a 1 mensalidade para elaboração do balanço anual e declarações</li>
+            </ul>
+            
+            <div class="signature-section">
+                <div class="signature-block">
+                    <p><strong>WF CONTABILIDADE</strong></p>
+                    <p>Walison Leopoldino Ferreira</p>
+                    <p>CPF: 092.654.176-50</p>
+                    <p>Contagem/MG, <script>document.write(new Date().toLocaleDateString('pt-BR'))</script></p>
+                    <div class="signature-line"></div>
+                    <p>_________________________________________</p>
+                    <p>Assinatura do Responsável</p>
+                </div>
+                
+                <div class="signature-block">
+                    <p><strong>CLIENTE</strong></p>
+                    <p>Elisangela Vieira de Souza</p>
+                    <p>CNPJ: 26.419.139/0001-68</p>
+                    <div class="signature-line"></div>
+                    <p>_________________________________________</p>
+                    <p>Assinatura do Cliente</p>
+                </div>
+            </div>
+            
+            <p class="terms">Os serviços serão prestados de acordo com as normas legais e técnicas da profissão contábil, conforme disposto no Código de Ética Profissional do Contabilista e na legislação específica.</p>
+        </div>
+        
+        <div class="footer">
+            <p>WF Contabilidade • (31) 99195-3885 • <a href="mailto:contato@wfdigital.online">contato@wfdigital.online</a></p>
+            <p>Rua José Alves do Vale, 100 - Darcy Ribeiro, Contagem/MG - CEP 32060-508</p>
+        </div>
+    </div>
+</body>
+</html>
